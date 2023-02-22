@@ -17,75 +17,42 @@ import com.vicentearmenta.androidcetysiccexamen01.databinding.ActivityMainBindin
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
-    public ActivityMainBinding binding;
-    private EditText costOfService;
-    private RadioGroup tipOptions;
-    private SwitchMaterial roundUpSwitch;
-    private Button calculateButton;
-    private TextView tipResult;
-    double tipPercentage = 0.2;
+
+    /*
+    * Examen 01
+    *
+    * Rúbrica para evaluar
+    *
+    * Examen Teorico	20	20 Reactivos de lo visto en clase
+    * Examen Practico	10	La aplicación trabaja sin errores y los componentes son visiblemente funcionales (por ejemplo: no texto incompleto, clic sin responder).
+    *                   20	La aplicación valida que se ingrese datos necesarios y se valida que sean correctos usando try catch.
+	                    20	La aplicación realiza los cálculos correspondientes y arroja los resultados esperados.
+	                    10	El código esta separado por funcionalidades usando la filosofía separación de intereses.
+	                    10	El código del Layout está seccionado de acuerdo a el tipo de recurso (styles, strings, dimentions, colors)
+	                    10	La aplicación utiliza las mejores prácticas y convenciones expuestas y debatidas en clase (Se emplea criterio del docente evaluando la efectividad del código y la aplicación).
+    *
+    * */
+
+
+    // tip: puedes usar view binding o findview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        // tip: aqui puedes vincular las vistas xml con su respectiva clase en java
 
-        costOfService= binding.costOfServiceEditText;
-        tipOptions = binding.tipOptions;
 
-        roundUpSwitch = binding.roundUpSwitch;
 
-        calculateButton = binding.calculateButton;
+        // tip: recuerda hacer el onClickListener
 
-        tipResult = binding.tipResult;
 
-        calculateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    calculateTip(Double.parseDouble(costOfService.getText().toString()));
-                } catch (NumberFormatException exception) {
-                    Toast.makeText(MainActivity.this, "Capturar un monto", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        // tip: los RadioButton se pueden usar individualmente, pero es mejor usar el RadioGroup
+        // revisa este articulo
+        //  https://developer.android.com/guide/topics/ui/controls/radiobutton?hl=es-419
 
-        tipOptions.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch(i){
-                    case R.id.option_twenty_percent:
-                        tipPercentage = 0.20;
-                        break;
-                    case R.id.option_eighteen_percent:
-                        tipPercentage = 0.18;
-                        break;
-                    case R.id.option_fifteen_percent:
-                        tipPercentage = 0.15;
-                        break;
-                }
-            }
-        });
     }
 
-    private void calculateTip(double cost){
-        if (cost == 0.0) {
-            displayTip(0);
-            return;
-        }
-
-        if (roundUpSwitch.isChecked()) {
-            displayTip(Math.ceil(cost * tipPercentage));
-        }
-        else {
-            displayTip(cost * tipPercentage);
-        }
-    }
-
-    private void displayTip(double result){
-        String formattedTip = NumberFormat.getCurrencyInstance().format(result);
-        tipResult.setText(getString(R.string.tip_amount, formattedTip));
-    }
+    // tip: recuerda separar logica del metodo onCreate ( cof cof ... func ... cof...)
 }
