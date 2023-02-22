@@ -23,14 +23,13 @@ public class MainActivity extends AppCompatActivity {
     *
     * Rúbrica para evaluar
     *
-    * Examen Teorico	20	20 Reactivos de lo visto en clase
-    * Examen Practico	10	La aplicación trabaja sin errores y los componentes son visiblemente funcionales (por ejemplo: no texto incompleto, clic sin responder).
+    * Examen Teórico	20	20 Reactivos de lo visto en clase
+    * Examen Práctico	10	La aplicación trabaja sin errores y los componentes son visiblemente funcionales (por ejemplo: no texto incompleto, clic sin responder).
     *                   20	La aplicación valida que se ingrese datos necesarios y se valida que sean correctos usando try catch.
 	                    20	La aplicación realiza los cálculos correspondientes y arroja los resultados esperados.
 	                    10	El código esta separado por funcionalidades usando la filosofía separación de intereses.
 	                    10	El código del Layout está seccionado de acuerdo a el tipo de recurso (styles, strings, dimentions, colors)
 	                    10	La aplicación utiliza las mejores prácticas y convenciones expuestas y debatidas en clase (Se emplea criterio del docente evaluando la efectividad del código y la aplicación).
-    *
     * */
 
 
@@ -54,5 +53,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // tip: recuerda separar logica del metodo onCreate ( cof cof ... func ... cof...)
+    // tip: recuerda separar logica del metodo onCreate ( cof cof ... funciones ... cof...)
 }
